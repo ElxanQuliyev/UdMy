@@ -12,7 +12,7 @@ namespace DataAccess.Abstract
     public interface ICourseDal :IEntityRepository<Course>
     {
         public void AddCourseWithLesson(Course courseDTOs);
-        public List<Course> ListCourses();
+        public List<Course> ListCourses(string lang);
         public Task<Course> GetCourse(int id);
         public Task<List<Course>>? FilterCourse(FilterCourseItem item);
         public void UpdateCourse(int id,Course courseDTOs);

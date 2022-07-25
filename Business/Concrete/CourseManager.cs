@@ -24,9 +24,9 @@ namespace Business.Concrete
             _coursedal.AddCourseWithLesson(dtoCourse);
         }
 
-        public List<Course> GetAll()
+        public List<Course> GetAll(string lang)
         {
-            return _coursedal.ListCourses();
+            return _coursedal.ListCourses(lang);
         }
 
         public async Task<Course> GetById(int id)

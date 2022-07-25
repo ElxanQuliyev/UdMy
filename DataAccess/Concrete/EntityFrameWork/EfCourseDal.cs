@@ -46,7 +46,7 @@ namespace DataAccess.Concrete.EntityFrameWork
                 .ToList();
         }
 
-        public List<Course> ListCourses()
+        public List<Course> ListCourses(string lang)
         {
             using UdMyDbContext context = new();
             var myCourses = context.Courses
@@ -55,7 +55,7 @@ namespace DataAccess.Concrete.EntityFrameWork
               .Include(c => c.Lessons)
               .Include(c => c.CourseSpecifactions)
               .ThenInclude(c => c.Specifaction)
-              .Include(c=>c.CourseLanguages)
+              .Include(c => c.CourseLanguages.Where(c => c.LanguageKey ==lang))
               .Where(c =>!c.IsDeleted)
                 .ToList();
             return myCourses;

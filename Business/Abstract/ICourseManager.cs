@@ -10,7 +10,7 @@ namespace Business.Abstract
 {
     public interface ICourseManager
     {
-        List<Course> GetAll();
+        List<Course> GetAll(string lang);
         Task<List<Course>>? GetCourseWithFilter(FilterCourseItem item);
         Task<Course> GetById(int id);
         List<Course> GetCoursesByCategory(int categoryId);

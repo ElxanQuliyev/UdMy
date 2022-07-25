@@ -19,7 +19,8 @@ namespace Entites.MyProfilers
                     )
                 .ForMember(
                     dest => dest.CourseName,
-                    opt => opt.MapFrom(src => src.CourseLanguages[0].Name)
+                    opt => opt.MapFrom(src => src.CourseLanguages.Count>0? 
+                        src.CourseLanguages[0].Name:null)
                     )
                 .ForMember(
                     dest => dest.InstructorName,

@@ -42,7 +42,7 @@ namespace UdmyApi.Controllers
         [HttpGet("{lang}")]
         public List<CourseListDto> GetAll(string? lang)
         {
-            var courseList = _courseManager.GetAll();
+            var courseList = _courseManager.GetAll(lang);
             var courseMapper= _mapper.Map<List<CourseListDto>>(courseList);
             return courseMapper;
         }
@@ -53,7 +53,7 @@ namespace UdmyApi.Controllers
         public async Task<CourseListFilter>? GetFilterCourse([FromBody] FilterCourseItem item)
         {
             var courseList = await _courseManager.GetCourseWithFilter(item);
-            var courseAll =  _courseManager.GetAll();
+            var courseAll =  _courseManager.GetAll(item.Lang);
 
             var courseMapper = _mapper.Map<List<CourseListDto>>(courseList);
             var cs = new CourseListFilter

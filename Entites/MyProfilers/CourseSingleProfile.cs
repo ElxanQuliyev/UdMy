@@ -14,20 +14,21 @@ namespace Entites.MyProfilers
         {
             CreateMap<CourseDTOs, Course>()
                  .ForMember(
-                    dest => dest.CourseLanguages[0].Name,
+                    dest => dest.CourseLanguages,
                     opt => opt.MapFrom(src => src.Name))
-
+                   .ReverseMap()
+                  .ForPath(s => s.Name, opt => opt.MapFrom(src => src.CourseLanguages[0].Name));
                  //.ForMember(
                  //   dest => dest.Lessons,
                  //   opt => opt.MapFrom(src => src.Lessons
                  //   .Select(c => new Lesson { Name = c.Name, LessonVideos = new List<LessonVideo>() })))
-                 .ForMember(
-                    dest => dest.CourseSpecifactions,
-                    opt => opt.MapFrom(src => src.SpecificationDTOs.Select(sp =>
-                        new CourseSpecifaction { Specifaction=
-                            new Specifaction { Icon=sp.Icon,Value=sp.Value} }
-                    ).ToArray()
-                    )); 
+                 //.ForMember(
+                 //   dest => dest.CourseSpecifactions,
+                 //   opt => opt.MapFrom(src => src.SpecificationDTOs.Select(sp =>
+                 //       new CourseSpecifaction { Specifaction=
+                 //           new Specifaction { Icon=sp.Icon,Value=sp.Value} }
+                 //   ).ToArray()
+                 //   )); 
         }       
     }
 }

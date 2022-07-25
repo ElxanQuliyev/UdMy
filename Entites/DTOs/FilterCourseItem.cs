@@ -12,6 +12,7 @@ namespace Entites.DTOs
         {
             InstructorIds = new List<int>();
         }
+        public string Lang { get; set; }
         public string? Q { get; set; }
         public decimal? Rating { get; set; }
         public decimal? MinPrice { get; set; }
