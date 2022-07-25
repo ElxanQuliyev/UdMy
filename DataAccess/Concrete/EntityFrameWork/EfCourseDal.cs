@@ -55,6 +55,7 @@ namespace DataAccess.Concrete.EntityFrameWork
               .Include(c => c.Lessons)
               .Include(c => c.CourseSpecifactions)
               .ThenInclude(c => c.Specifaction)
+              .Include(c=>c.CourseLanguages)
               .Where(c =>!c.IsDeleted)
                 .ToList();
             return myCourses;
@@ -71,12 +72,12 @@ namespace DataAccess.Concrete.EntityFrameWork
 
                 .AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(item.Q) && item.Q != null)
-            {
-                myCourses = myCourses.Where(c => c.Name.Contains(item.Q)
-             || c.Category.Name.Contains(item.Q)
-             || c.Instructor.FullName.Contains(item.Q));
-            }
+            //if (!string.IsNullOrWhiteSpace(item.Q) && item.Q != null)
+            //{
+            //    myCourses = myCourses.Where(c => c.Name.Contains(item.Q)
+            // || c.Category.Name.Contains(item.Q)
+            // || c.Instructor.FullName.Contains(item.Q));
+            //}
           
             if(item.MinPrice.HasValue && item.MaxPrice.HasValue)
             {

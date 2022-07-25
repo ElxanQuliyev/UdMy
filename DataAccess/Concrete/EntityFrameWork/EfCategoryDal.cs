@@ -21,7 +21,7 @@ namespace DataAccess.Concrete.EntityFrameWork
                 {
                     Id = c.Id,
                     ParentCategoryId = c.ParentCategoryId,
-                    Name=c.Name,
+                    //Name=c.Name,
                     IsFeatured=c.IsFeatured,
                 }).ToList();
 
@@ -65,7 +65,7 @@ namespace DataAccess.Concrete.EntityFrameWork
             return context.Categories.Select(c => new CategoryListDTO()
             {
                 Id = c.Id,
-                Name = c.Name,
+                //Name = c.Name,
                 IsFeatured = c.IsFeatured,
                 ParentCategoryId = c.ParentCategoryId,
                 //LessonCount=context.Courses.Where(cr=>cr.CategoryId==c.Id).Count(),

@@ -10,9 +10,6 @@ namespace Entites
     public class Course:IEntity
     {
         public int  Id{ get; set; }
-        public string Name { get; set; }
-        public string Summary { get; set; }
-        public string Description { get; set; }
         public string PhotoUrl { get; set; } = null!;
         public DateTime PublishDate { get; set; }
         public DateTime? Updatedate { get; set; }
@@ -29,6 +26,6 @@ namespace Entites
         public virtual Instructor? Instructor { get; set; }
         public virtual List<Lesson>? Lessons { get; set; }
         public virtual List<CourseSpecifaction>? CourseSpecifactions { get; set; }
-
+        public virtual List<CourseLanguage> CourseLanguages { get; set; }
     }
 }

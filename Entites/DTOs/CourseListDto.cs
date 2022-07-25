@@ -24,7 +24,7 @@ namespace Entites.DTOs
         public int InstructorId { get; set; }
         public string? InstructorPhoto { get; set; }
         public DateTime PublishDate { get; set; }
-        public List<LessonDTOs>? Lessons { get; set; }
+        //public List<LessonDTOs>? Lessons { get; set; }
         public List<SpecificationDTOs>? SpecificationList { get; set; }
     }
 }

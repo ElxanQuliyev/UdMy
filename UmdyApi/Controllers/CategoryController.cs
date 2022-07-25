@@ -64,9 +64,9 @@ namespace UdmyApi.Controllers
             }
 
             var categoryMapper= _mapper.Map<Category>(category);
-
+                
             _categoryManager.Update(categoryMapper);
-            res.Value = new { message = "update successfully!" };
+            res.Value = new { category };
             return res;
 
         }

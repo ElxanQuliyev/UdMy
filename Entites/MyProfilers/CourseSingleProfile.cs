@@ -14,9 +14,13 @@ namespace Entites.MyProfilers
         {
             CreateMap<CourseDTOs, Course>()
                  .ForMember(
-                    dest => dest.Lessons,
-                    opt => opt.MapFrom(src => src.Lessons
-                    .Select(c => new Lesson { Name = c.Name, LessonVideos = new List<LessonVideo>() })))
+                    dest => dest.CourseLanguages[0].Name,
+                    opt => opt.MapFrom(src => src.Name))
+
+                 //.ForMember(
+                 //   dest => dest.Lessons,
+                 //   opt => opt.MapFrom(src => src.Lessons
+                 //   .Select(c => new Lesson { Name = c.Name, LessonVideos = new List<LessonVideo>() })))
                  .ForMember(
                     dest => dest.CourseSpecifactions,
                     opt => opt.MapFrom(src => src.SpecificationDTOs.Select(sp =>

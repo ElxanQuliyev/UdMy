@@ -5,6 +5,7 @@ using Entites;
 using Entites.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,17 +24,23 @@ namespace UdmyApi.Controllers
         }
 
         // GET api/<CourseController>/5
-        [HttpGet("{id}")]
-        public  async Task<CourseListDto?> Get(int? id)
+        [HttpGet("{lang}/{id}")]
+        public  async Task<CourseListDto?> Get(int? id,string? lang)
         {
             if(id==null) return null;
             var course = await _courseManager.GetById(id.Value);
+            course.CourseLanguages = course.CourseLanguages.Where(c => c.LanguageKey == lang).ToList();
+            //course.CourseLanguages=course.CourseLanguages.Where(c=>c.LanguageKey==lang).ToList();
             var courseMapper = _mapper.Map<CourseListDto>(course);
+            //courseMapper.CourseName=course.CourseLanguages.FirstOrDefault(c=>c.LanguageKey==lang).Name;
+            //courseMapper.Description = course.CourseLanguages.FirstOrDefault(c => c.LanguageKey == lang).Description;
+            //courseMapper.Summary = course.CourseLanguages.FirstOrDefault(c => c.LanguageKey == lang).Summary;
+            //test2.CourseName = course.CourseLanguages.FirstOrDefault(c => c.LanguageKey == lang).Name;
             return courseMapper;
         }
         //[Authorize(AuthenticationSchemes = "Bearer")]
-        [HttpGet]
-        public List<CourseListDto> GetAll()
+        [HttpGet("{lang}")]
+        public List<CourseListDto> GetAll(string? lang)
         {
             var courseList = _courseManager.GetAll();
             var courseMapper= _mapper.Map<List<CourseListDto>>(courseList);
@@ -98,7 +105,7 @@ namespace UdmyApi.Controllers
             var _mapperCourse = _mapper.Map<CourseDTOs,Course>(courseDT);
 
             _courseManager.Update(id.Value, _mapperCourse);
-            res.Value = new { status = 200, message = "Successfully updated" };
+            res.Value = new { status = 200, course = courseDT };
             return res;
         }
         

@@ -21,11 +21,11 @@ namespace Entites.MyProfilers
              .ForMember(
                  dest => dest.ParentId,
                  opt => opt.MapFrom(src => src.ParentCategoryId)
-                 )
-             .ForMember(
-                 dest => dest.ParentName,
-                 opt => opt.MapFrom(src => src.ParentCategory.Name)
-              );
+                 );
+             //.ForMember(
+             //    dest => dest.ParentName,
+             //    opt => opt.MapFrom(src => src.ParentCategory.Name)
+             // );
 
 
         }

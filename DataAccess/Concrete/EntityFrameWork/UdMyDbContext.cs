@@ -14,8 +14,8 @@ namespace DataAccess.Concrete.EntityFrameWork
     {
         protected override void OnConfiguring(DbContextOptionsBuilder option)
         {
-            option.UseSqlServer(@"Server =.\;Database=K310ETreeckDB;Trusted_Connection=true;MultipleActiveResultSets=True");
-        
+            //option.UseSqlServer(@"Server =.\;Database=K310ETreeckDB;Trusted_Connection=true;MultipleActiveResultSets=True");
+            option.UseSqlServer(@"Data Source = SQL8002.site4now.net; Initial Catalog = db_a88a9a_k310udemydb; User Id = db_a88a9a_k310udemydb_admin; Password = K310_2022");
         }
         public DbSet<Course> Courses { get; set; } = null!;
         public DbSet<Category> Categories { get; set; }

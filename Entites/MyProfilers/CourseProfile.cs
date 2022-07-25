@@ -19,7 +19,7 @@ namespace Entites.MyProfilers
                     )
                 .ForMember(
                     dest => dest.CourseName,
-                    opt => opt.MapFrom(src => src.Name)
+                    opt => opt.MapFrom(src => src.CourseLanguages[0].Name)
                     )
                 .ForMember(
                     dest => dest.InstructorName,
@@ -29,16 +29,16 @@ namespace Entites.MyProfilers
                     dest => dest.InstructorPhoto,
                     opt => opt.MapFrom(src => src.Instructor.ProfilImg)
                     )
-         
-                 .ForMember(
-                    dest => dest.CategoryName,
-                    opt => opt.MapFrom(src => src.Category.Name)
-                    )
-                 .ForMember(
-                    dest => dest.Lessons,
-                    opt => opt.MapFrom(src => 
-                    src.Lessons.Select(c=>new LessonDTOs { LessonId = c.Id, Name = c.Name, LessonVideos = c.LessonVideos }))
-                    )
+
+                 //.ForMember(
+                 //   dest => dest.CategoryName,
+                 //   opt => opt.MapFrom(src => src.Category.Name)
+                 //   )
+                 //.ForMember(
+                 //   dest => dest.Lessons,
+                 //   opt => opt.MapFrom(src =>
+                 //   src.Lessons.Select(c => new LessonDTOs { LessonId = c.Id, Name = c., LessonVideos = c.LessonVideos }))
+                 //   )
                  .ForMember(
                     dest => dest.SpecificationList,
                     opt => opt.MapFrom(src => src.CourseSpecifactions.Select(cs=>new SpecificationDTOs

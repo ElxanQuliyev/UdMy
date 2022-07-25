@@ -23,7 +23,6 @@ namespace Business.Concrete
         {
             Category cat = new()
             {
-                Name = category.Name,
                 IsFeatured = category.IsFeatured,
                 ParentCategoryId = category.ParentCategoryId,
                 ModifadeOn = DateTime.Now,
